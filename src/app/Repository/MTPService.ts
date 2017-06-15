@@ -89,4 +89,48 @@ export class MTPService {
       .map(response => response.json() as JGraph);
   }
 
+  public GetGraph2D(sensorCode: string): Observable<JGraph> {
+    let url = this.baseUrl + '/api/Sensor/Graph2D?sensorCode=' + sensorCode;
+    let body = '';
+    let headers = this.owin.GenerateHeaders();
+    let options = new RequestOptions({ headers: headers });
+    return this.http.get(url, options)
+      .map(response => response.json() as JGraph);
+  }
+
+  public GetGraph3D(sensorCode: string): Observable<JGraph> {
+    let url = this.baseUrl + '/api/Sensor/Graph3D?sensorCode=' + sensorCode;
+    let body = '';
+    let headers = this.owin.GenerateHeaders();
+    let options = new RequestOptions({ headers: headers });
+    return this.http.get(url, options)
+      .map(response => response.json() as JGraph);
+  }
+
+  public GetGraph5D(sensorCode: string): Observable<JGraph> {
+    let url = this.baseUrl + '/api/Sensor/Graph5D?sensorCode=' + sensorCode;
+    let body = '';
+    let headers = this.owin.GenerateHeaders();
+    let options = new RequestOptions({ headers: headers });
+    return this.http.get(url, options)
+      .map(response => response.json() as JGraph);
+  }
+
+  public GetGraphWk(sensorCode: string): Observable<JGraph> {
+    let url = this.baseUrl + '/api/Sensor/GraphWk?sensorCode=' + sensorCode;
+    let body = '';
+    let headers = this.owin.GenerateHeaders();
+    let options = new RequestOptions({ headers: headers });
+    return this.http.get(url, options)
+      .map(response => response.json() as JGraph);
+  }
+
+  public GetGraph2Wk(sensorCode: string): Observable<JGraph> {
+    let url = this.baseUrl + '/api/Sensor/Graph2Wk?sensorCode=' + sensorCode;
+    let body = '';
+    let headers = this.owin.GenerateHeaders();
+    let options = new RequestOptions({ headers: headers });
+    return this.http.get(url, options)
+      .map(response => response.json() as JGraph);
+  }
 }
