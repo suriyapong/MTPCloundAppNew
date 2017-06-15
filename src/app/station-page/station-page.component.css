@@ -1,0 +1,25 @@
+.mat-list-icon {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+md-card{
+  box-sizing: border-box;
+  margin: 16px;
+}
+
+
+ md-card{
+     width: 400px;
+     box-sizing: border-box;
+     margin: 16px;
+ }
+ 
+.card-contrainer{
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.example-header-image {
+  background-image: url('');
+  background-size: cover;
+}

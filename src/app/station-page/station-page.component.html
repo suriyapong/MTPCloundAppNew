@@ -1,0 +1,41 @@
+<md-toolbar color="primary">
+    <button md-icon-button [mdMenuTriggerFor]="menu">
+        <md-icon>more_vert</md-icon>
+    </button>
+    <md-menu #menu="mdMenu">
+        <button md-menu-item (click)="openDialog()">
+            <md-icon>account_circle</md-icon>
+            <span>My Profile</span>
+        </button>
+        <button md-menu-item (click)="Logout()">
+            <md-icon>input</md-icon>
+            <span>Logout</span>
+        </button>
+    </md-menu>
+    <span>{{title}}</span>
+    <span class="example-spacer"></span>
+</md-toolbar>
+
+<!--<md-list-item *ngFor="let station of listStations">
+    <md-card class="example-card" [routerLink]="['/Sensor', station.StationCode]">
+        <md-card-header>
+            <div md-card-avatar style="background-image: url('assets/Images/LogoMtp.png'); background-size: cover;"></div>
+            <md-card-title>{{station.StationCode}} {{station.StationName}}</md-card-title>
+            <md-card-subtitle>{{station.Description}} <br/>Latitude : {{station.Latitude}} <br/>Longtitude : {{station.Longtitude}}</md-card-subtitle>
+        </md-card-header>
+    </md-card>
+</md-list-item>-->
+
+<div class="card-contrainer">
+    <md-card *ngFor="let station of listStations" [routerLink]="['/Sensor', station.StationCode]">
+
+            <img md-card-image [alt]="station.name" src="http://mtpdb.ddnsthai.com/mtpcloud/Images/{{station.StationImage}}">
+            <!--<img md-card-image [alt]="station.name" src="http://192.168.130.15/mtpcloud/Images/{{station.StationImage}}">-->
+            <md-card-title>
+                {{station.StationCode}} {{station.StationName}}
+            </md-card-title>
+            <md-card-content class="secondary">
+                {{station.Description}}
+            </md-card-content>
+    </md-card>
+</div>

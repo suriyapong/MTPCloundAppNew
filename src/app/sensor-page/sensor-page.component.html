@@ -1,0 +1,95 @@
+<md-sidenav-container fullscreen>
+    <md-toolbar color="primary">
+        <button md-icon-button [routerLink]="['/Station']">
+            <md-icon>keyboard_arrow_left</md-icon>
+        </button>
+        <span>{{stationCode}} {{stationName}}</span>
+        <span class="example-spacer"></span>
+
+        <button md-fab (click)="formShowing=!formShowing">
+      <md-icon>data_usage</md-icon>
+    </button>
+    </md-toolbar>
+
+    <div class="form" *ngIf="formShowing">
+        <md-card>
+            <md-card-title>
+
+            </md-card-title>
+            <md-card-content>
+                <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+                    <thead>
+                        <tr>
+                            <th colspan="2" class="mdl-data-table__cell--non-numeric">
+                                ข้อมูลสถานีโทรมาตร
+                            </th>
+                        </tr>
+                        <tr>
+                            <th colspan="2" class="mdl-data-table__cell--non-numeric">
+                                <!-- this creates a google map on the page with the given lat/lng from -->
+                                <!-- the component as the initial center of the map: -->
+                                <agm-map [latitude]="lat" [longitude]="lng">
+                                    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                                </agm-map>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric">รหัสสถานี</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{station.StationCode}}</td>
+                        </tr>
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric">ชื่อสถานี</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{station.StationName}}</td>
+                        </tr>
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric">ที่ตั้ง</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{station.Description}}</td>
+                        </tr>
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric">พิกัด N</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{station.Latitude}}</td>
+                        </tr>
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric">พิกัด E</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{station.Longtitude}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </md-card-content>
+        </md-card>
+    </div>
+
+    <!--<md-list-item *ngFor="let sensor of listSensors">
+        <md-card class="example-card">
+            <md-card-header>
+                <div md-card-avatar style="background-image: url('assets/Images/LogoMtp.png'); background-size: cover;"></div>
+                <md-card-title>{{sensor.SensorCode}} {{sensor.SensorType}}</md-card-title>
+                <md-card-subtitle>{{sensor.Value}}</md-card-subtitle>
+            </md-card-header>
+        </md-card>
+        <md-divider></md-divider>
+    </md-list-item>-->
+
+    <ul class="demo-list-two mdl-list">
+        <md-list-item *ngFor="let sensor of listSensors">
+            <li class="mdl-list__item mdl-list__item--two-line" [routerLink]="['/Graph', sensor.SensorCode]">
+                <span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-avatar">{{sensor.Icon}}</i>
+                    <span>{{sensor.SensorType}}</span>
+                    <span class="mdl-list__item-sub-title">
+                       {{sensor.UpdateTime}}
+                    </span>
+                </span>
+                <span class="mdl-list__item-secondary-content">
+                    <md-chip-list>
+                        <md-chip color="primary" selected="true">{{sensor.Value}}</md-chip>
+                    </md-chip-list>
+                </span>
+            </li>
+        </md-list-item>
+    </ul>
+
+</md-sidenav-container>

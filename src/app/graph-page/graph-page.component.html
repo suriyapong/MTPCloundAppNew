@@ -1,0 +1,57 @@
+<!--<script src="node_modules/chart.js/Chart.min.js"></script>
+<script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>-->
+
+<!--<script src="assets/js/angular.min.js"></script>
+<script src="assets/js/angular-chart.min.js"></script>-->
+<script src="node_modules/chart.js/src/chart.js"></script>
+
+<md-sidenav-container fullscreen>
+
+  <md-toolbar color="primary">
+    <button md-icon-button [routerLink]="['/Sensor', 'TKh.107']">
+            <md-icon>keyboard_arrow_left</md-icon>
+        </button>
+    <span>{{sensorCode}} {{sensorName}}</span>
+    <span class="example-spacer"></span>
+  </md-toolbar>
+
+  <md-card>
+    <md-card-title>
+      {{sensorName}}
+    </md-card-title>
+    <md-card-content>
+      <p>Chart</p>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div style="display: block;">
+            <canvas baseChart width="400" height="400" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+              [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+          </div>
+        </div>
+      </div>
+
+
+      <md-button-toggle-group #group="mdButtonToggleGroup">
+        <md-button-toggle value="left" disabled>
+          <span>1D</span>
+        </md-button-toggle>
+        <md-button-toggle value="center">
+          <span>2D</span>
+        </md-button-toggle>
+        <md-button-toggle value="right">
+          <span>3D</span>
+        </md-button-toggle>
+        <md-button-toggle value="justify">
+          <span>4D</span>
+        </md-button-toggle>
+      </md-button-toggle-group>
+
+    </md-card-content>
+
+    <button (click)="Render()">CLICK</button>
+
+  </md-card>
+
+</md-sidenav-container>
