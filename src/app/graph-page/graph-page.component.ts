@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MTPService } from '../Repository/MTPService';
 import { JSensor } from '../Models/JSensor';
 import { JGraph } from '../Models/JGraph';
+
+import { BaseChartDirective } from 'ng2-charts/ng2-charts';
 
 @Component({
   selector: 'app-graph-page',
@@ -10,17 +12,27 @@ import { JGraph } from '../Models/JGraph';
   styleUrls: ['./graph-page.component.css']
 })
 export class GraphPageComponent implements OnInit {
+  @ViewChild(BaseChartDirective) chart: BaseChartDirective;
+
   private sensorCode: string;
   private sensorName: string;
   private sensor: JSensor;
 
   private graph1D: JGraph;
 
-  public lineChartData: Array<any> = [{ data: [65, 59, 80, 81, 56, 55, 40], label: "AB" },];
-  public lineChartLabels: Array<any> = ['January1', 'February', 'March', 'April', 'May', 'June', 'July','8','9','10','11','12'];
+  public lineChartData: Array<any> = [{ data: [], label: "" },];
+  public lineChartLabels: Array<any> = [];
   public lineChartOptions: any = { responsive: true };
   public lineChartLegend: boolean = true;
   public lineChartType: string = 'line';
+  // events
+  public chartClicked(e: any): void {
+    console.log(e);
+  }
+
+  public chartHovered(e: any): void {
+    console.log(e);
+  }
 
   constructor(private route: ActivatedRoute, private mtp: MTPService) { }
 
@@ -31,16 +43,70 @@ export class GraphPageComponent implements OnInit {
       this.mtp.GetSensorDetailBySensorCode(this.sensorCode).subscribe(
         (datasensor) => { this.sensor = datasensor; this.sensorCode = datasensor.SensorCode; this.sensorName = datasensor.SensorType }
       );
-
-      this.mtp.GetGraph1D(this.sensorCode).subscribe(
-        (graph) => { this.graph1D = graph; this.Render(); }
-      );
     });
+
+    //Render Chart1D
+    this.RenderCraph1D();
   }
 
-  public Render(): void {
-    // lineChart
-    this.lineChartData = [{ data: this.graph1D.y, label: this.graph1D.Label },];
-    this.lineChartLabels = ['January11', 'February', 'March', 'April', 'May', 'June', 'July','8','9','10','11','12'];
+  public RenderCraph1D(): void {
+    this.mtp.GetGraph1D(this.sensorCode).subscribe(
+      (graph) => {
+        this.lineChartData = [{ data: graph.y, label: graph.Label },];
+        this.lineChartLabels = graph.x;
+        //แก้ปัญหา lineChartLabels ไม่เปลี่ยนตาม
+        this.chart.chart.config.data.labels = this.lineChartLabels;
+      }
+    );
+  }
+
+  public RenderCraph2D(): void {
+    this.mtp.GetGraph2D(this.sensorCode).subscribe(
+      (graph) => {
+        this.lineChartData = [{ data: graph.y, label: graph.Label },];
+        this.lineChartLabels = graph.x;
+        this.chart.chart.config.data.labels = this.lineChartLabels;
+      }
+    );
+  }
+
+  public RenderCraph3D(): void {
+    this.mtp.GetGraph3D(this.sensorCode).subscribe(
+      (graph) => {
+        this.lineChartData = [{ data: graph.y, label: graph.Label },];
+        this.lineChartLabels = graph.x;
+        this.chart.chart.config.data.labels = this.lineChartLabels;
+      }
+    );
+  }
+
+  public RenderCraph5D(): void {
+    this.mtp.GetGraph5D(this.sensorCode).subscribe(
+      (graph) => {
+        this.lineChartData = [{ data: graph.y, label: graph.Label },];
+        this.lineChartLabels = graph.x;
+        this.chart.chart.config.data.labels = this.lineChartLabels;
+      }
+    );
+  }
+
+  public RenderCraphWk(): void {
+    this.mtp.GetGraphWk(this.sensorCode).subscribe(
+      (graph) => {
+        this.lineChartData = [{ data: graph.y, label: graph.Label },];
+        this.lineChartLabels = graph.x;
+      this.chart.chart.config.data.labels = this.lineChartLabels;
+      }
+    );
+  }
+
+  public RenderCraph2Wk(): void {
+    this.mtp.GetGraph2Wk(this.sensorCode).subscribe(
+      (graph) => {
+        this.lineChartData = [{ data: graph.y, label: graph.Label },];
+        this.lineChartLabels = graph.x;
+        this.chart.chart.config.data.labels = this.lineChartLabels;
+      }
+    );
   }
 }
