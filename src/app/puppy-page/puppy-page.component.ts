@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-//Material
 import { MaterialModule} from '@angular/material';
 
 @Component({

@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-//Material 4
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdButtonModule, MdCheckboxModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MdInputModule } from '@angular/material';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-//Router
 import { Router } from '@angular/router';
 import { MTPService } from '../Repository/MTPService';
 

@@ -26,8 +26,7 @@
                         </tr>
                         <tr>
                             <th colspan="2" class="mdl-data-table__cell--non-numeric">
-                                <!-- this creates a google map on the page with the given lat/lng from -->
-                                <!-- the component as the initial center of the map: -->
+
                                 <agm-map [latitude]="lat" [longitude]="lng">
                                     <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
                                 </agm-map>
@@ -61,18 +60,7 @@
             </md-card-content>
         </md-card>
     </div>
-
-    <!--<md-list-item *ngFor="let sensor of listSensors">
-        <md-card class="example-card">
-            <md-card-header>
-                <div md-card-avatar style="background-image: url('assets/Images/LogoMtp.png'); background-size: cover;"></div>
-                <md-card-title>{{sensor.SensorCode}} {{sensor.SensorType}}</md-card-title>
-                <md-card-subtitle>{{sensor.Value}}</md-card-subtitle>
-            </md-card-header>
-        </md-card>
-        <md-divider></md-divider>
-    </md-list-item>-->
-
+    
     <ul class="demo-list-two mdl-list">
         <md-list-item *ngFor="let sensor of listSensors">
             <li class="mdl-list__item mdl-list__item--two-line" [routerLink]="['/Graph', sensor.SensorCode]">

@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-//Route
 import { ActivatedRoute } from '@angular/router';
 
-//Repo
 import { MTPService } from '../Repository/MTPService';
 
-//Model
 import { JSensor } from '../Models/JSensor';
 import { JStation } from '../Models/JStation';
 
-//Material
 import { MdChipsModule } from '@angular/material';
 
 

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-//Material 4
 import {MdButtonModule, MdCheckboxModule} from '@angular/material';
 
 @Component({

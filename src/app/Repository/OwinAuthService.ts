@@ -41,7 +41,7 @@ export class OwinAuthService {
                 let au = response.json();
                 this.token = au.access_token;
                 this.userName =  au.userName; 
-                //this.repoAuth.SaveAothData(au.access_token, au.token_type, au.expires_in, au.userName);
+
                 return au.userName;
             });
     }

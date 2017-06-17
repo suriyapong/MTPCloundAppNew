@@ -13,13 +13,11 @@ import { JGraph } from '../Models/JGraph';
 @Injectable()
 export class MTPService {
   baseUrl = 'http://mtpdb.ddnsthai.com/mtpcloud';
-  // baseUrl = 'http://192.168.130.15/mtpcloud';
 
   constructor(private http: Http, private owin: OwinAuthService) {
     this.owin.SetBaseUrl(this.baseUrl);
   }
 
-  //----
   public Login(userName: string, password: string): Observable<string> {
     return this.owin.SignIn(userName, password);
   }
@@ -33,7 +31,6 @@ export class MTPService {
   public GetUserName(): string {
     return this.owin.GetUserName();
   }
-  //----
 
   public GetProfileByUserName(userName: string): Observable<JUser> {
     let url = this.baseUrl + "/api/User/Profile?userName=" + userName;

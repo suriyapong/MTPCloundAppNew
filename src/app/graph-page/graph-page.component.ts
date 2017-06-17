@@ -25,7 +25,7 @@ export class GraphPageComponent implements OnInit {
   public lineChartOptions: any = { responsive: true };
   public lineChartLegend: boolean = true;
   public lineChartType: string = 'line';
-  // events
+
   public chartClicked(e: any): void {
     console.log(e);
   }
@@ -45,7 +45,6 @@ export class GraphPageComponent implements OnInit {
       );
     });
 
-    //Render Chart1D
     this.RenderCraph1D();
   }
 
@@ -54,7 +53,7 @@ export class GraphPageComponent implements OnInit {
       (graph) => {
         this.lineChartData = [{ data: graph.y, label: graph.Label },];
         this.lineChartLabels = graph.x;
-        //แก้ปัญหา lineChartLabels ไม่เปลี่ยนตาม
+
         this.chart.chart.config.data.labels = this.lineChartLabels;
       }
     );
