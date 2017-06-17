@@ -13,61 +13,38 @@
 
     <div class="form" *ngIf="formShowing">
         <md-card>
-            <md-card-title>
+            <agm-map [latitude]="lat" [longitude]="lng">
+                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+            </agm-map>
+            <div class="mdl-list__item-primary-content">
+                <span class="title" align="end">รหัสสถานี : </span>{{station.StationCode}}
+            </div>
 
-            </md-card-title>
-            <md-card-content>
-                <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-                    <thead>
-                        <tr>
-                            <th colspan="2" class="mdl-data-table__cell--non-numeric">
-                                ข้อมูลสถานีโทรมาตร
-                            </th>
-                        </tr>
-                        <tr>
-                            <th colspan="2" class="mdl-data-table__cell--non-numeric">
+            <div class="mdl-list__item-primary-content">
+                <span class="title" align="end">ชื่อสถานี : </span>{{station.StationName}}
+            </div>
 
-                                <agm-map [latitude]="lat" [longitude]="lng">
-                                    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-                                </agm-map>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="mdl-data-table__cell--non-numeric">รหัสสถานี</td>
-                            <td class="mdl-data-table__cell--non-numeric">{{station.StationCode}}</td>
-                        </tr>
-                        <tr>
-                            <td class="mdl-data-table__cell--non-numeric">ชื่อสถานี</td>
-                            <td class="mdl-data-table__cell--non-numeric">{{station.StationName}}</td>
-                        </tr>
-                        <tr>
-                            <td class="mdl-data-table__cell--non-numeric">ที่ตั้ง</td>
-                            <td class="mdl-data-table__cell--non-numeric">{{station.Description}}</td>
-                        </tr>
-                        <tr>
-                            <td class="mdl-data-table__cell--non-numeric">พิกัด N</td>
-                            <td class="mdl-data-table__cell--non-numeric">{{station.Latitude}}</td>
-                        </tr>
-                        <tr>
-                            <td class="mdl-data-table__cell--non-numeric">พิกัด E</td>
-                            <td class="mdl-data-table__cell--non-numeric">{{station.Longtitude}}</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="mdl-list__item-primary-content">
+                <span class="title" align="end">ที่ตั้ง : </span>{{station.Description}}
+            </div>
 
-            </md-card-content>
+            <div class="mdl-list__item-primary-content">
+                <span class="title" align="end">พิกัด N : </span>{{station.Latitude}}
+            </div>
+
+            <div class="mdl-list__item-primary-content">
+                <span class="title" align="end">พิกัด E : </span>{{station.Longtitude}}
+            </div>
         </md-card>
     </div>
-    
+
     <ul class="demo-list-two mdl-list">
         <md-list-item *ngFor="let sensor of listSensors">
             <li class="mdl-list__item mdl-list__item--two-line" [routerLink]="['/Graph', sensor.SensorCode]">
                 <span class="mdl-list__item-primary-content">
                 <i class="material-icons mdl-list__item-avatar">{{sensor.Icon}}</i>
                     <span>{{sensor.SensorType}}</span>
-                    <span class="mdl-list__item-sub-title">
+                <span class="mdl-list__item-sub-title">
                        {{sensor.UpdateTime}}
                     </span>
                 </span>

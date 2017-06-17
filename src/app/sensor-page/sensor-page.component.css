@@ -1,6 +1,7 @@
  md-card{
      box-sizing: border-box;
      margin: 16px;
+     width: 100%;
  }
 
 agm-map {
@@ -25,12 +26,6 @@ agm-map {
 
  md-sidenav-container{
      color:rgba(0,0,0,0.54);
- }
-
- md-card{
-     width: 100%;
-     box-sizing: border-box;
-     margin: 16px;
  }
 
  md-chip {
@@ -65,4 +60,8 @@ md-input-container{
 
 md-card{
     width: 100%;
+}
+
+.title{
+    width: 100px;
 }
